@@ -1,16 +1,9 @@
 html {
   --white: #fff;
+  --blue-gray: var(--blue-gray);
 }
 
-body,
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-input {
+* {
   margin: 0;
   padding: 0;
 }
@@ -37,7 +30,6 @@ aside {
   background-size: cover;
   width: 50%;
   position: fixed;
-  float: left;
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
@@ -60,12 +52,14 @@ aside {
 }
 
 .bitmap {
-  width: 80px;
-  height: 80px;
+  --side: 80px;
+  width: var(--side);
+  height: var(--side);
   border-radius: 50%;
 }
 
 .user_info {
+  font-family: Helvetica;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -73,15 +67,12 @@ aside {
 }
 
 .user_name {
-  font-family: Helvetica;
   font-size: 18px;
-  font-weight: bold;
   color: var(--white);
   margin-bottom: 4px;
 }
 
 .user_blog {
-  font-family: Helvetica;
   font-size: 16px;
   font-weight: bold;
   color: var(--white);
@@ -156,9 +147,10 @@ aside {
 }
 
 main {
-  width: calc(50% - 144px);
+  --padding: 72px;
+  width: calc(50% - 2 * var(--padding));
   margin-left: 50%;
-  padding: 0 72px;
+  padding: 0 var(--padding);
 }
 
 .main-page {
@@ -173,7 +165,7 @@ main {
   font-family: Geomanist;
   font-size: 48px;
   line-height: 1.21;
-  color: #2c2c35;
+  color: var(--blue-gray);
   margin-bottom: 20px;
 }
 
@@ -181,10 +173,13 @@ main {
   font-family: Helvetica;
   font-size: 18px;
   line-height: 1.56;
-  color: #2c2c35;
+  color: var(--blue-gray);
 }
 
 .arrows {
+  --calc_nums: calc(30px / 10);
+  --arrow_color: rgba(90, 90, 255, 0.7);
+  --lighter_arrow_color: rgba(90, 90, 255, 0);
   position: absolute;
   left: 50%;
   margin-left: 30px;
@@ -199,8 +194,8 @@ main {
   position: absolute;
   width: 100%;
   height: 100%;
-  border-left: calc(30px / 10) solid rgba(90, 90, 255, 0.7);
-  border-bottom: calc(30px / 10) solid rgba(90, 90, 255, 0.7);
+  border-left: var(--calc_nums) solid var(--arrow_color);
+  border-bottom: var(--calc_nums) solid var(--arrow_color);
   transform: translate(calc(30px * 2 / 3), calc(30px * 4 / 3)) rotate(-45deg);
   animation: arrows 2s linear infinite;
 }
@@ -210,31 +205,31 @@ main {
   position: absolute;
   width: 100%;
   height: 100%;
-  border-left: calc(30px / 10) solid rgba(90, 90, 255, 0.7);
-  border-bottom: calc(30px / 10) solid rgba(90, 90, 255, 0.7);
+  border-left: var(--calc_nums) solid var(--arrow_color);
+  border-bottom: var(--calc_nums) solid var(--arrow_color);
   transform: translate(calc(30px * 2 / 3), 0px) rotate(-45deg);
   animation: arrows 2s linear infinite calc(3s / -2);
 }
 
 @keyframes arrows {
   0% {
-    border-left: calc(30px / 10) solid rgba(90, 90, 255, 0);
-    border-bottom: calc(30px / 10) solid rgba(90, 90, 255, 0);
+    border-left: var(--calc_nums) solid var(--lighter_arrow_color);
+    border-bottom: var(--calc_nums) solid var(--lighter_arrow_color);
     transform: translate(calc(30px / -6), calc(30px * 4 / -6)) rotate(-45deg);
   }
   10%,
   90% {
-    border-left: calc(30px / 10) solid rgba(90, 90, 255, 0);
-    border-bottom: calc(30px / 10) solid rgba(90, 90, 255, 0);
+    border-left: var(--calc_nums) solid var(--lighter_arrow_color);
+    border-bottom: var(--calc_nums) solid var(--lighter_arrow_color);
   }
   50% {
-    border-left: calc(30px / 10) solid rgba(90, 90, 255, 0.7);
-    border-bottom: calc(30px / 10) solid rgba(90, 90, 255, 0.7);
+    border-left: var(--calc_nums) solid var(--arrow_color);
+    border-bottom: var(--calc_nums) solid var(--arrow_color);
     transform: translate(calc(30px / -6), 0px) rotate(-45deg);
   }
   100% {
-    border-left: calc(30px / 10) solid rgba(90, 90, 255, 0);
-    border-bottom: calc(30px / 10) solid rgba(90, 90, 255, 0);
+    border-left: var(--calc_nums) solid var(--lighter_arrow_color);
+    border-bottom: var(--calc_nums) solid var(--lighter_arrow_color);
     transform: translate(calc(30px / -6), calc(30px * 4 / 6)) rotate(-45deg);
   }
 }
@@ -242,7 +237,7 @@ main {
 .headline2 {
   font-family: Geomanist;
   font-size: 36px;
-  color: #2c2c35;
+  color: var(--blue-gray);
   margin-bottom: 24px;
 }
 
@@ -250,7 +245,7 @@ main {
   font-family: Helvetica;
   font-size: 16px;
   line-height: 1.75;
-  color: #2c2c35;
+  color: var(--blue-gray);
   margin-bottom: 24px;
 }
 
@@ -281,7 +276,7 @@ main {
 .headline3 {
   font-family: Geomanist;
   font-size: 30px;
-  color: #2c2c35;
+  color: var(--blue-gray);
   margin: 48px 0 20px 0;
 }
 
@@ -296,7 +291,7 @@ main {
 .headline4 {
   font-family: Geomanist;
   font-size: 24px;
-  color: #2c2c35;
+  color: var(--blue-gray);
 }
 
 .cite {
@@ -306,7 +301,7 @@ main {
   font-style: italic;
   line-height: 1.6;
   text-align: center;
-  color: #2c2c35;
+  color: var(--blue-gray);
 }
 
 .wrap-forest {
@@ -346,7 +341,7 @@ main {
   font-family: Helvetica;
   font-size: 18px;
   font-weight: bold;
-  color: #2c2c35;
+  color: var(--blue-gray);
   margin-bottom: 12px;
 }
 
@@ -354,7 +349,7 @@ main {
   font-family: Helvetica;
   font-size: 14px;
   line-height: 1.71;
-  color: #2c2c35;
+  color: var(--blue-gray);
   margin-bottom: 26px;
 }
 
@@ -372,7 +367,7 @@ main {
   width: calc(100% - 155px);
   background: #00000000;
 
-  color: #2c2c35;
+  color: var(--blue-gray);
   font-family: Helvetica;
   font-size: 16px;
   border: 0;
